@@ -1,13 +1,8 @@
-#include "SSD1306Wire.h" // legacy include: `#include "SSD1306.h"`
+
+
 #include <ButtonDebounce.h>
 
-#define BLYNK_PRINT Serial
 
-#define BLYNK_USE_DIRECT_CONNECT
-
-#include <BlynkSimpleEsp32_BLE.h>
-#include <BLEDevice.h>
-#include <BLEServer.h>
 
 // You should get Auth Token in the Blynk App.
 // Go to the Project Settings (nut icon).
@@ -162,6 +157,7 @@ void check_btns(){
   }
 }
 
+/*
 BLYNK_WRITE(V0){
   player_one_timer = param.asInt() * 1000 * 60;
   
@@ -170,6 +166,8 @@ BLYNK_WRITE(V1){
 
   player_two_timer = param.asInt() * 1000 * 60;
 }
+*/
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
@@ -183,11 +181,6 @@ void setup() {
   Serial.print(r);
   Serial.println("Waiting for connections...");
 
-  Blynk.setDeviceName("Blynk");
-
-  Blynk.begin(auth);
-  Blynk.virtualWrite(V0,(player_one_timer /60000));
-  Blynk.virtualWrite(V1,(player_two_timer / 60000));
   Serial.println(" setup done");
 }
 
